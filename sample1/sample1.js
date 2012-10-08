@@ -23,8 +23,8 @@ function eventOnReady(){
 }
 
 function initApp(){
-    setHandle($("#main-window")[0].getContext('2d'));
-    fillRect( 0, 0, 100, 100 );
-    setColor( 100, 0, 0, 0 );
-    fillRect( 100, 100, 100, 100 );
+    var renderer = new Renderer("main-window");
+    renderer.fillRect( 0, 0, 100, 100 );
+    renderer.setColor( 100, 0, 0, 0 );
+    renderer.fillRect( 100, 100, 100, 100 );
 }

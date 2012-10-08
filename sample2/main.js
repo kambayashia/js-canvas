@@ -8,14 +8,16 @@
 
 $(document).ready( eventOnReady );
 
+var renderer;
+
 function eventOnReady(){
     initApp();
 
 }
 
 function initApp(){
-    setHandle($("#main-window")[0].getContext('2d'));
-    setInterval( drawScreen, 33 );
+    renderer = new Renderer( "main-window" );
+    setInterval( drawScreen, Number(1000/60) );
 }
 
 var _x1 = 0, _y1 = 0, _x2 = 100, _y2 = 100;
@@ -34,12 +36,11 @@ function drawScreen(){
         _x2 += _v2;
     }
 
-    setColor( 0xFF, 0xFF, 0xFF, 0 );
-    fillRect( 0, 0, 300, 300 );
+    renderer.clear( 0, 0, 300, 300 );
 
-    setColor( _x1, 0, 0, 0 );
-    fillRect( _x1, _y1, 100, 100 );
-    setColor( 0, _x2, 0, 0 );
-    fillRect( _x2, _y2, 100, 100 );
+    renderer.setColor( _x1, 0, 0, 0 );
+    renderer.fillRect( _x1, _y1, 100, 100 );
+    renderer.setColor( 0, _x2, 0, 0 );
+    renderer.fillRect( _x2, _y2, 100, 100 );
 
 }
