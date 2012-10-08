@@ -38,9 +38,9 @@ function drawScreen(){
 
     renderer.clear( 0, 0, 300, 300 );
 
-    renderer.setColor( _x1, 0, 0, 0 );
+    renderer.setColor( _x1, 0, 0, 1 );
     renderer.fillRect( _x1, _y1, 100, 100 );
-    renderer.setColor( 0, _x2, 0, 0 );
+    renderer.setColor( 0, _x2, 0, 1 );
     renderer.fillRect( _x2, _y2, 100, 100 );
 
 }

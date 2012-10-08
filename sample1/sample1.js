@@ -25,6 +25,6 @@ function eventOnReady(){
 function initApp(){
     var renderer = new Renderer("main-window");
     renderer.fillRect( 0, 0, 100, 100 );
-    renderer.setColor( 100, 0, 0, 0 );
+    renderer.setColor( 100, 0, 0, 1 );
     renderer.fillRect( 100, 100, 100, 100 );
 }
