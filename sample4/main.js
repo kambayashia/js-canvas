@@ -32,11 +32,13 @@ function initApp(){
             if( event.dataTransfer.items.length ){
                 var item = event.dataTransfer.items[0];
                 if ((item.kind == 'file') && (item.type.match('^image/'))) {
-                    next_image = new Image();
-                    next_image.onload = function(){
+                    var loading_image = new Image();
+                    loading_image.onload = function(){
+                        current_image = next_image;
+                        next_image = loading_image;
                         visible_next_image = true;
                     }
-                    next_image.src = window.webkitURL.createObjectURL( item.getAsFile() );
+                    loading_image.src = window.webkitURL.createObjectURL( item.getAsFile() );
                 }
             }
 
@@ -71,8 +73,6 @@ function drawScreen(){
     renderer.clear( 0, 0, _window_size_x, _window_size_y );
 
     renderer.drawImage( current_image, 0, 0, current_image.width, current_image.height );
-    renderer.drawImage( current_image, current_image.width, 0, 20, 20 );
-    renderer.drawImage( current_image, current_image.width+20, 0, current_image.width*2, current_image.height*2 );
 
     if( visible_next_image ){
         renderer.drawImage( next_image, 200, 0, next_image.width, next_image.height );
